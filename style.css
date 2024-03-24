@@ -1,0 +1,102 @@
+body{
+    margin: 0;
+    font-family: "Poppins", sans-serif !important;
+}
+.hero-section{
+    background-image: url('assets/hero_bg.png');
+    background-size: cover;
+    background-position: center;
+    height: fit-content;
+}
+.hero-section nav img{
+    width: 150px;
+    height: 150px;
+    position: relative;
+    left: 0px !important;
+    filter: hue-rotate(180deg) invert(100%);
+}
+.hero-section nav{
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin: 0%;
+}
+.hero-section nav ul{
+    display: flex;
+    list-style: none;
+    gap: 20%;
+    margin-left: 100%;
+    margin: auto;
+}
+.hero-section nav ul a{
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.hero-section .content{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 6%;
+    padding-bottom: 13%;
+}
+.hero-section .content h1{
+    color: white;
+    font-size: 3rem;
+    margin: auto;
+}
+.hero-section .content p{
+    color: rgba(235, 235, 235, 0.86);
+    font-size: 1.2rem;
+    margin: auto;
+}
+.hero-section .content input{
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    width: 70%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 69, 0.412);
+}
+.hero-section .content button{
+    border: 2px solid rgba(243, 33, 184, 0.789);
+    border-radius: 30px;
+    background-color: rgba(243, 33, 184, 0.508);
+    padding: 0.55rem 1.5rem;
+    color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 69, 0.412);
+    transition: all 500ms;
+}
+.hero-section .content button:hover{
+    border: 2px solid rgb(255, 0, 183);
+    background-color: rgba(243, 33, 184, 0.737);
+}
+footer{
+    background-color: #1a1a1a;
+    color: rgba(255, 255, 255, 0.399);
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 0%;
+}
+
+#loader{
+    display: none;
+}
+.result{
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 70%;
+    margin-top: 50px;
+    box-shadow: 5px 5px 5px rgba(218, 168, 18, 0.195);
+    padding: 1rem;
+    display: none;
+}
+#result-para{
+    color: white;
+    font-size: 1.2rem;
+    text-align: start;
+}

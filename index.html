@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Génesis</title>
+    <link rel="icon" href="assets/logo_bg.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <section class="hero-section">
+        <nav>
+            <div class="logo">
+                <div class="image-container">
+                    <img src="assets/logo.png" alt="Génesis AI">
+                    <div class="white-overlay"></div>
+                  </div>
+            </div>
+        </nav>
+        <div class="content">
+            <h1>Génesis AI</h1>
+            <p>Artificial Intelligence for everyone</p>
+            <input type="text" name="field" id="field" placeholder="🎨  Put your creative thoughts here">
+            <button id="btn">Generate</button>
+            <div class="spinner-border" role="status" id="loader">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="result" id="result">
+                <p id="result-para"></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <span>© 2021 Génesis AI. All rights reserved.</span>
+    </footer>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+    </script>
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        const API_KEY = "AIzaSyC9nH8ecepkTqLwhsRlG5l0ULzoB6sJG0U";
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+        const field = document.getElementById("field");
+        const button = document.querySelector("button");
+        button.addEventListener("click", async () => {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('btn').style.display = 'none';
+            const text = field.value;
+            const result = await model.generateContent(text);
+            console.log(result.response.candidates[0].content.parts[0].text);
+            document.getElementById("result-para").innerText = result.response.candidates[0].content.parts[0].text.replaceAll("*", "");
+            document.getElementById('result').style.display = 'block';
+            console.log(result)
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('btn').style.display = 'block';
+        });
+        field.addEventListener("keyup", async (e) => {
+            if (e.key === "Enter") {
+                document.getElementById('btn').style.display = 'none';
+                document.getElementById('loader').style.display = 'block';
+                const text = field.value;
+                const result = await model.generateContent(text);
+                console.log(result.response.candidates[0].content.parts[0].text);
+                document.getElementById("result-para").innerText = result.response.candidates[0].content.parts[0].text.replaceAll("*", "");
+                document.getElementById('result').style.display = 'block';
+                console.log(result)
+                document.getElementById('btn').style.display = 'block';
+                document.getElementById('loader').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
